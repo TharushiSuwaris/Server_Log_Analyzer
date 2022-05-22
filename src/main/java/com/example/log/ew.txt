@@ -1,0 +1,20 @@
+(.*)swap_pager_getswapspace: failed
+(.*)exited on signal 11
+(.*)syslogd: exiting on signal 15
+(.*)CPU supports Enhanced Speedstep, but is not recognized.
+node_exporter: level=error bind: address already in use
+node_exporter: caller=tls_config.go:195 level=info msg="TLS is disabled." http2=false 
+sshd: _secure_path: /iocage/jails/websvr1/root/usr/local/www/eng.pdn.ac.lk/.login_conf is world writable
+kernel: est0: <Enhanced SpeedStep Frequency Control> numa-domain 0 on cpu0
+kernel: est: CPU supports Enhanced Speedstep, but is not recognized.
+kernel: device_attach: est0 attach returned 6
+usb_alloc_device: set address 2 failed (USB_ERR_IOERROR, ignored)
+pci12: <dasp, performance counters> at device 22.5 (no driver attached)
+/etc/rc: WARNING: devfs_set_ruleset: you must specify a ruleset number
+/etc/rc: WARNING: devfs_apply_ruleset: you must specify a ruleset    
+pci8: <dasp, performance counters> at device 14.0 (no driver attached)
+ipfw2 (ipv6) initialized, divert loadable, nat loadable, default to accept, logging disabled
+/usr/sbin/service: WARNING: $atop_enable is not set properly - see rc.conf(5)
+line 105 column 0 syntax error, unexpected T_String, expecting $end
+syntax error in /etc/ntp.conf line 105, column 0
+vdev state changed, pool_guid=$17243324507134627735 vdev_guid=$9456758699139177473

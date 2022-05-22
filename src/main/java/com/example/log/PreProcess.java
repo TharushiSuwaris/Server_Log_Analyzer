@@ -1,11 +1,19 @@
+package com.example.log;
+
 import java.io.BufferedWriter;
 import java.io.File; 
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.io.IOException;
 import java.io.FileWriter;
 import java.util.Set;
+
+import org.json.simple.JSONArray;
+//import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class PreProcess{
 
@@ -35,6 +43,37 @@ public class PreProcess{
             }
             out.close();
             System.out.println("successfully written");
+            reader.close();
+        }catch(FileNotFoundException e){
+            System.out.println("An error occurred while reading.");
+        }
+    }
+    public void readJson() {
+        JSONParser jsonParser = new JSONParser();
+        try{
+            FileReader reader = new FileReader("errors.json");
+            Object obj = jsonParser.parse(reader);
+            JSONArray list = (JSONArray) obj;
+            System.out.print(list);
+        }catch(FileNotFoundException e){
+            System.out.println("An error occurred while reading.");
+        }catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void checker(String fileName, String eLine) {
+        try{
+            File logFile = new File(fileName);
+            Scanner reader = new Scanner(logFile);
+            while(reader.hasNextLine()){
+                String line = reader.nextLine();
+                if(line.matches(eLine)){
+                    System.out.println("found");
+                }
+            }
             reader.close();
         }catch(FileNotFoundException e){
             System.out.println("An error occurred while reading.");
