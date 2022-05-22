@@ -1,8 +1,7 @@
-[
+
     {
         "(.*)swap_pager_getswapspace: failed" : "memory utilization issue",
         "(.*)exited on signal 11" : "error 1",
         "(.*)syslogd: exiting on signal 15" : "error 2",
         "(.*)CPU supports Enhanced Speedstep, but is not recognized." : "error 3"
     }
-]
