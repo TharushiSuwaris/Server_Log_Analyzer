@@ -1,7 +1,19 @@
 
     {
         "(.*)swap_pager_getswapspace: failed" : "memory utilization issue",
-        "(.*)exited on signal 11" : "error 1",
-        "(.*)syslogd: exiting on signal 15" : "error 2",
-        "(.*)CPU supports Enhanced Speedstep, but is not recognized." : "error 3"
+        "(.*)exited on signal 11" : "Hardware issue",
+        "(.*)CPU supports Enhanced Speedstep, but is not recognized." : "Speedstep might be disabled/locked/not being properly recongised",
+        "(.*)node_exporter: level=error(.*)listen tcp(.*)bind: address already in use(.*)" : "blocked port/caused the node exporter to start twice",
+        "(.*)node_exporter:(.*)TLS is disabled.(.*)http2=false" : "node exporter cannot be started",
+        "(.*)/.login_conf is world writable" : "permission isuue",
+        "(.*)device_attach: est(.*) attach returned 6" : "all attempts to attatch to a interface have failed",
+        "(.*)usb_alloc_device: set address(.*)failed (.*)USB_ERR_IOERROR, ignored(.*)" :"",
+        "(.*)usbd_setup_device_desc: getting device descriptor at addr(.*)failed, USB_ERR_IOERROR" :"",
+        "(.*)usbd_req_re_enumerate: addr=(.*), set address failed! (.*)USB_ERR_IOERROR, ignored(.*)" :"",
+        "(.*)ugen0.2: <Unknown > at usbus0 (.*)disconnected(.*)" : "",
+        "(.*)uhub_reattach_port: could not allocate new device" : "can be an issue with usb stick/ chip set",
+        "(.*)pci(.*): <dasp, performance counters> at device (.*)no driver attached(.*)" : "device not recognised",
+        "(.*)/usr/sbin/service: WARNING: (.*) is not set properly - see rc.conf(.*)." :"can be a syntax error in rc.config",
+        "(.*)vdev state changed(.*)" : "VM related issue",
+        "(.*)syntax error(.*)" : "syntax error"
     }

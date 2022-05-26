@@ -5,13 +5,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Scanner;
 import java.io.IOException;
 import java.io.FileWriter;
 import java.util.Set;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -72,7 +70,7 @@ public class PreProcess{
             while(reader.hasNextLine()){
                 String line = reader.nextLine();
                 if(line.matches(eLine)){
-                    System.out.println("found :"+eLine+"--------"+value);
+                    System.out.println("found :"+line+"--------> "+value);
                 }
             }
             reader.close();
