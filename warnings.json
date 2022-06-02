@@ -1,0 +1,7 @@
+{
+    "(.*)exited on signal 11" : "Hardware issue",
+    "(.*)node_exporter: level=error(.*)listen tcp(.*)bind: address already in use(.*)" : "blocked port/caused the node exporter to start twice",
+    "(.*)node_exporter:(.*)TLS is disabled.(.*)http2=false" : "node exporter cannot be started",
+    "(.*)/usr/sbin/service: WARNING: (.*) is not set properly - see rc.conf(.*)." :"can be a syntax error in rc.config",
+    "(.*)CPU supports Enhanced Speedstep, but is not recognized." : "Speedstep might be disabled/locked/not being properly recongised"
+}

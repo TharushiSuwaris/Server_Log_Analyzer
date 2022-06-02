@@ -15,6 +15,9 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class PreProcess{
+    String text = "";
+    String errors ="";
+    String warnings ="";
 
     public String removeDigits(String line){
         String result = line.replaceAll("\\(\\d+\\)", "");
@@ -25,6 +28,8 @@ public class PreProcess{
     public void processLines(String fileName) throws IOException {
         //read log file and write
         try{
+            File file = new File("newFile.txt");
+            file.delete();
             File logFile = new File(fileName);
             Scanner reader = new Scanner(logFile);
             FileWriter writer = new FileWriter("newFile.txt", true);
@@ -47,11 +52,11 @@ public class PreProcess{
             System.out.println("An error occurred while reading.");
         }
     }
-    public JSONObject readJson() {
+    public JSONObject readJson(String fileName) {
         JSONObject object = new JSONObject();;
         JSONParser jsonParser = new JSONParser();
         try{
-            FileReader reader = new FileReader("errors.json");
+            FileReader reader = new FileReader(fileName);
             object = (JSONObject) jsonParser.parse(reader);
         }catch(FileNotFoundException e){
             System.out.println("An error occurred while reading.");
@@ -64,18 +69,46 @@ public class PreProcess{
     }
     
     public void checker(String fileName, String eLine, String value) {
+        
         try{
             File logFile = new File(fileName);
             Scanner reader = new Scanner(logFile);
             while(reader.hasNextLine()){
                 String line = reader.nextLine();
                 if(line.matches(eLine)){
-                    System.out.println("found :"+line+"--------> "+value);
+                    text = text.concat(line+"===>>"+value+"\n");
+                    //System.out.println(text);
+                    //System.out.println("found :"+line+"--------> "+value);
                 }
             }
             reader.close();
         }catch(FileNotFoundException e){
             System.out.println("An error occurred while reading.");
         }
+    }
+
+    public void readJsonObject(String file) {
+        if(file == "errors.json"){
+            JSONObject array =  readJson(file);
+            for (Object keyStr : array.keySet()) {
+                Object keyvalue = array.get(keyStr);
+                String key = keyStr.toString();
+                String keyv = keyvalue.toString();
+                checker("newFile.txt", key, keyv);
+            }
+            errors = text;
+            text = "";
+        }else{
+            JSONObject array =  readJson(file);
+            for (Object keyStr : array.keySet()) {
+                Object keyvalue = array.get(keyStr);
+                String key = keyStr.toString();
+                String keyv = keyvalue.toString();
+                checker("newFile.txt", key, keyv);
+            }
+            warnings = text;
+            text = "";
+        }
+        
     }
 }
